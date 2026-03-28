@@ -1,0 +1,29 @@
+Para movimentar o personagem pela tela use as teclas do padrão de jogos (WASD).
+
+            *-----*                        
+            |  W  |     
+            *-----*     
+    *-----* *-----* *-----*
+    |  A  | |  S  | |  D  |
+    *-----* *-----* *-----*
+
+
+Para movimentar o personagem pela tela use as teclas do padrão de jogos (WASD).
+            *-----*
+            |  ↑  |
+            *-----*
+    *-----* *-----* *-----*
+    |  ←  | |  ↓  | |  →  |
+    *-----* *-----* *-----*
+
+
+Para arrastar o personagem pela tela com o mouse, leve o mouse até o personagem, estando em cima do sprite,
+     pressione o botão esquerdo do mouse, segure e arraste como desejar pela tela.
+
+
+Para movimentar o personagem pela tela em diagonal use as teclas:
+     ↖️ q ou Q => Diagonal para cima a esquerda
+     ↘️ c ou C => Diagonal para baixo a direita
+     ↙️ z ou Z => Diagonal para baixo a esquerda
+     ↗️ r ou R => Diagonal para cima a direita
+

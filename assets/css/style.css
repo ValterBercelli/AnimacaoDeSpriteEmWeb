@@ -1,0 +1,26 @@
+body
+{
+    margin: 0;
+    overflow: hidden;
+    background: #222;
+}
+
+/* Área do sprite animado */
+#personagem
+{
+    position: absolute;
+    width: 123px;
+    /* Largura de 1 quadro */
+    height: 269px;
+    /* Altura do quadro */
+    background-image: url("./../../img/sprite2.png");
+    background-size: 615px 1345px;
+    /* Grid 5x5 quadros */
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+
+    top: 50px;
+    left: 50px;
+    cursor: grab;
+    user-select: none;
+}
