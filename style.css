@@ -1,0 +1,48 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    background: #222;
+}
+
+/* Área do sprite animado */
+#personagemOrinal
+{
+    position: absolute;
+    width: 128px;          /* Largura de 1 quadro */
+    height: 128px;         /* Altura do quadro */
+    background-image: url("img/sprite.png");
+    background-size: 512px 128px; /* 4 quadros (4 × 128 = 512) */
+    background-repeat: no-repeat;
+
+    top: 50px;
+    left: 50px;
+    cursor: grab;
+    user-select: none;
+
+    /* Animação dos quadros */
+    animation: animarSprite 0.6s steps(4) infinite;
+}
+
+
+@keyframes animarSprite {
+    from { background-position: 0px; }
+    to   { background-position: -512px; } /* 128 * 4 */
+}
+
+#personagem {
+    position: absolute;
+    width: 123px;
+    /* Largura de 1 quadro */
+    height: 269px;
+    /* Altura do quadro */
+    background-image: url("img/sprite2.png");
+    background-size: 615px 1345px;
+    /* Grid 5x5 quadros */
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+
+    top: 50px;
+    left: 50px;
+    cursor: grab;
+    user-select: none;
+}
