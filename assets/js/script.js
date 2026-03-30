@@ -1,6 +1,6 @@
-//-------------------------
+//-----------------------------------
 // Variaáveis do Personagem
-//-------------------------
+//-----------------------------------
 const personagem = document.getElementById("personagem");
 
 let posX = 50;
@@ -11,9 +11,9 @@ let arrastando = false;
 let deslocX = 0;
 let deslocY = 0;
 
-//--------------------------------------------------------
+//-----------------------------------
 // Animação Do Sprite Do Personagem (25 quadros, Grid 5x5)
-//--------------------------------------------------------
+//-----------------------------------
 const totalQuadros = 25;
 const colunas = 5;
 const larguraQuadro = 123; // 615 / 5
@@ -30,9 +30,9 @@ setInterval(() =>
 }, 1000 / 15); // 15 fps
 
 
-//--------------------------------------------------
+//-----------------------------------
 // Manter personagem na Tela - (Não "estoura a tela)
-//--------------------------------------------------
+//-----------------------------------
 function manterNaTela()
 {
     const limiteX = window.innerWidth - personagem.offsetWidth;
@@ -45,9 +45,9 @@ function manterNaTela()
     personagem.style.top = `${posY}px`;
 }
 
-//----------------------------------------
+//-----------------------------------
 // Movimentação do personagem pelo teclado
-//----------------------------------------
+//-----------------------------------
 document.addEventListener("keydown", (evento) =>
 {
     switch (evento.key) {
@@ -99,9 +99,9 @@ document.addEventListener("keydown", (evento) =>
     manterNaTela();
 });
 
-//------------------------------------------------
+//-----------------------------------
 // Movimentar o personagem pelo Mouse ("Arrastar")
-//------------------------------------------------
+//-----------------------------------
 personagem.addEventListener("mousedown", (evento) =>
 {
     arrastando = true;
@@ -124,3 +124,78 @@ document.addEventListener("mousemove", (evento) =>
         manterNaTela();
     }
 });
+
+document.querySelectorAll("#tecladoVirtual button").forEach(btn =>
+{
+    btn.addEventListener("touchstart", moverVirtual);
+    btn.addEventListener("mousedown", moverVirtual);
+});
+
+personagem.addEventListener("touchstart", (evento) =>
+{
+    const toque = evento.touches[0];
+    arrastando = true;
+    deslocX = toque.clientX - posX;
+    deslocY = toque.clientY - posY;
+});
+
+document.addEventListener("touchend", () =>
+{
+    arrastando = false;
+});
+
+document.addEventListener("touchmove", (evento) =>
+{
+    if (arrastando) {
+        const toque = evento.touches[0];
+        posX = toque.clientX - deslocX;
+        posY = toque.clientY - deslocY;
+        manterNaTela();
+    }
+});
+
+document.querySelectorAll("#tecladoVirtual button").forEach(btn =>
+{
+    btn.addEventListener("touchstart", moverVirtual);
+    btn.addEventListener("mousedown", moverVirtual);
+});
+
+function moverVirtual(e)
+{
+    const dir = e.target.dataset.dir;
+
+    switch (dir) {
+        case "up":
+            posY -= velocidade;
+            break;
+        case "down":
+            posY += velocidade;
+            break;
+        case "left":
+            posX -= velocidade;
+            break;
+        case "right":
+            posX += velocidade;
+            break;
+
+        // DIAGONAIS
+        case "up-left":
+            posY -= velocidade;
+            posX -= velocidade;
+            break;
+        case "up-right":
+            posY -= velocidade;
+            posX += velocidade;
+            break;
+        case "down-left":
+            posY += velocidade;
+            posX -= velocidade;
+            break;
+        case "down-right":
+            posY += velocidade;
+            posX += velocidade;
+            break;
+    }
+
+    manterNaTela();
+}
